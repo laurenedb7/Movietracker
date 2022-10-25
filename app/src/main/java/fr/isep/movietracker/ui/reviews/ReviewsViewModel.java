@@ -1,16 +1,16 @@
-package fr.isep.movietracker.ui.dashboard;
+package fr.isep.movietracker.ui.reviews;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class ReviewsViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public ReviewsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is reviews fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,4 +1,4 @@
-package fr.isep.movietracker.ui.dashboard;
+package fr.isep.movietracker.ui.reviews;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import fr.isep.movietracker.databinding.FragmentDashboardBinding;
+import fr.isep.movietracker.databinding.FragmentReviewsBinding;
 
-public class DashboardFragment extends Fragment {
+public class ReviewsFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentReviewsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        ReviewsViewModel reviewsViewModel =
+                new ViewModelProvider(this).get(ReviewsViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentReviewsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        reviewsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
