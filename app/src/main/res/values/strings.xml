@@ -8,4 +8,5 @@
     <string name="name">Name of the film</string>
     <string name="description">Description</string>
     <string name="date">Date I watch the film</string>
+    <string name="cowatcher">People I watch the movie with</string>
 </resources>

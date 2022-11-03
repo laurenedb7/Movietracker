@@ -1,7 +1,5 @@
 package fr.isep.movietracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +8,17 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class NewReviewActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     EditText datePicker;
+
+    List<String> cowatchers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,21 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
     }
 
     /**
+     * Add a new cowatcher
+     * @param view
+     *          the view
+     */
+    public void addCowatcher(View view) {
+        EditText cowatcher = findViewById(R.id.cowatcher);
+        if (!cowatcher.getText().toString().equals("")) {
+            cowatchers.add(cowatcher.getText().toString());
+            cowatcher.setText("");
+            TextView textView = findViewById(R.id.textView3);
+            textView.setText(cowatchers.toString());
+        }
+    }
+
+    /**
      * The submit button to add the review in the database
      * @param view
      *          the view
@@ -51,8 +70,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         String filmDate = date.getText().toString();
         String filmDescription = description.getText().toString();
         float filmRating = ratingBar.getRating();
-        Review review = new Review(filmName, filmDate, null, filmDescription, filmRating);
-        System.out.println(review.toString());
+        Review review = new Review(filmName, filmDate, cowatchers, filmDescription, filmRating);
     }
 
     @Override
