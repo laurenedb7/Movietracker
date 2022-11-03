@@ -16,8 +16,10 @@ import java.util.List;
 
 public class NewReviewActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    /** The date we watch the movie with */
     EditText datePicker;
 
+    /** The list of people we watch the movie with */
     List<String> cowatchers = new ArrayList<>();
 
     @Override
@@ -52,7 +54,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
             cowatchers.add(cowatcher.getText().toString());
             cowatcher.getText().clear();
             TextView textView = findViewById(R.id.textView3);
-            textView.setText(cowatchers.toString());
+            textView.setText(cowatchers.toString().replace("[", "").replace("]", ""));
         }
     }
 

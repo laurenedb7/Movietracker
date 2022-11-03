@@ -4,9 +4,9 @@
     <string name="title_reviews">Reviews</string>
 
     <string name="add_button">+</string>
-    <string name="new_review">Add a new review</string>
-    <string name="name">Name of the film</string>
-    <string name="description">Description</string>
-    <string name="date">Date I watch the film</string>
+    <string name="new_review">Add a new movie review</string>
+    <string name="name">Name of the movie</string>
+    <string name="description">Description of the movie</string>
+    <string name="date">Date I watch the movie</string>
     <string name="cowatcher">People I watch the movie with</string>
 </resources>
