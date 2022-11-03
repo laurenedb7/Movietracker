@@ -2,6 +2,9 @@ package fr.isep.movietracker;
 
 import java.util.List;
 
+/**
+ * Class for the object Review
+ */
 public class Review {
 
     private String filmName;

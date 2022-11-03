@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import fr.isep.movietracker.databinding.FragmentHomeBinding;
 
+/**
+ * The home fragment with the last reviews and a dashboard
+ */
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;

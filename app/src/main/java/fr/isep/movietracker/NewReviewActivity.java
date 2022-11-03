@@ -22,6 +22,11 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         setContentView(R.layout.activity_new_review);
     }
 
+    /**
+     * To pick a date when we click on the date input
+     * @param view
+     *          the view
+     */
     public void showDateDialog(View view) {
         datePicker = (EditText) view;
 
@@ -32,6 +37,11 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         datePickerDialog.show();
     }
 
+    /**
+     * The submit button to add the review in the database
+     * @param view
+     *          the view
+     */
     public void submit(View view) {
         EditText name = findViewById(R.id.name);
         EditText description = findViewById(R.id.description);

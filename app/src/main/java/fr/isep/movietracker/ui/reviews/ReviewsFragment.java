@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import fr.isep.movietracker.databinding.FragmentReviewsBinding;
 
+/**
+ * The reviews fragment with all the reviews we have
+ */
 public class ReviewsFragment extends Fragment {
 
     private FragmentReviewsBinding binding;
