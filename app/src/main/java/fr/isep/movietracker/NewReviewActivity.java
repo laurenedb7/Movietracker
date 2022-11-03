@@ -48,9 +48,9 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
      */
     public void addCowatcher(View view) {
         EditText cowatcher = findViewById(R.id.cowatcher);
-        if (!cowatcher.getText().toString().equals("")) {
+        if (!cowatcher.getText().toString().isEmpty()) {
             cowatchers.add(cowatcher.getText().toString());
-            cowatcher.setText("");
+            cowatcher.getText().clear();
             TextView textView = findViewById(R.id.textView3);
             textView.setText(cowatchers.toString());
         }
