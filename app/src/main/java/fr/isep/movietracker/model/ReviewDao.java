@@ -1,3 +1,10 @@
+/**
+ * Project : Personal movie tracker
+ *
+ * @author Laurène de Blauwe
+ * @version 1.00 2022/11/09
+ */
+
 package fr.isep.movietracker.model;
 
 import androidx.lifecycle.LiveData;
@@ -9,6 +16,9 @@ import androidx.room.Update;
 
 import java.util.List;
 
+/**
+ * DAO to map java method call to SQL queries
+ */
 @Dao
 public interface ReviewDao {
 

@@ -1,3 +1,10 @@
+/**
+ * Project : Personal movie tracker
+ *
+ * @author Laurène de Blauwe
+ * @version 1.00 2022/11/09
+ */
+
 package fr.isep.movietracker.view.ui.reviews;
 
 import android.os.Bundle;
