@@ -90,15 +90,15 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-    <!--                    <ImageView-->
-    <!--                        android:layout_width="50dp"-->
-    <!--                        android:layout_height="50dp"-->
-    <!--                        android:layout_marginStart="20dp"-->
-    <!--                        android:layout_marginTop="10dp"-->
-    <!--                        android:layout_marginEnd="10dp"-->
-    <!--                        android:layout_marginBottom="10dp"-->
-    <!--                        android:contentDescription="@string/description"-->
-    <!--                        android:src="@drawable/ic_baseline_description_24" />-->
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:contentDescription="@string/description"
+                            android:src="@drawable/ic_baseline_description_24" />
 
                         <TextView
                             android:id="@+id/descriptionCardView"
@@ -113,15 +113,15 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-    <!--                    <ImageView-->
-    <!--                        android:layout_width="50dp"-->
-    <!--                        android:layout_height="50dp"-->
-    <!--                        android:layout_marginStart="20dp"-->
-    <!--                        android:layout_marginTop="10dp"-->
-    <!--                        android:layout_marginEnd="10dp"-->
-    <!--                        android:layout_marginBottom="10dp"-->
-    <!--                        android:contentDescription="@string/cowatcher"-->
-    <!--                        android:src="@drawable/ic_baseline_supervisor_account_24" />-->
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:contentDescription="@string/cowatcher"
+                            android:src="@drawable/ic_baseline_people_24" />
 
                         <TextView
                             android:id="@+id/cowatchersCardview"
@@ -136,15 +136,15 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-    <!--                    <ImageView-->
-    <!--                        android:layout_width="50dp"-->
-    <!--                        android:layout_height="50dp"-->
-    <!--                        android:layout_marginStart="20dp"-->
-    <!--                        android:layout_marginTop="10dp"-->
-    <!--                        android:layout_marginEnd="10dp"-->
-    <!--                        android:layout_marginBottom="10dp"-->
-    <!--                        android:contentDescription="@string/rating"-->
-    <!--                        android:src="@drawable/ic_baseline_star_rate_24" />-->
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:contentDescription="@string/rating"
+                            android:src="@drawable/ic_baseline_star_rate_24" />
 
                         <TextView
                             android:id="@+id/ratingCardview"
