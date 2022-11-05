@@ -19,6 +19,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -110,6 +112,16 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         if (checkReviewAttributes(review)) {
             //add the review in the database
             reviewsViewModel.insertReview(review);
+            Snackbar snackbar = Snackbar.make(view, "Adding your review", Snackbar.LENGTH_LONG);
+            snackbar.setAction("Cancel", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    reviewsViewModel.deleteReview(review.getFilmName());
+                    Snackbar snackbar = Snackbar.make(view, "Your review hasn't been added", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            });
+            snackbar.show();
 
             //go on home page
             Intent intent = new Intent(this, MainActivity.class);
@@ -117,7 +129,21 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         }
         else {
             //error message
-
+            String messageToDisplay = "Missing fields";
+            if (review.getFilmName().isEmpty()) {
+                messageToDisplay = "The film name is missing";
+            }
+            else if (review.getDate().isEmpty()) {
+                messageToDisplay = "The date is missing";
+            }
+            else if (review.getFilmDescription().isEmpty()) {
+                messageToDisplay = "The description is missing";
+            }
+            else if (review.getFilmRating() == 0) {
+                messageToDisplay = "You haven't rate the film yet";
+            }
+            Snackbar snackbar = Snackbar.make(view, messageToDisplay, Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
     }
 

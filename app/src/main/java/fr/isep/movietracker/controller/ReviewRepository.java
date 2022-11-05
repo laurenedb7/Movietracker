@@ -65,12 +65,12 @@ public class ReviewRepository {
 
     /**
      * Delete a review from the database
-     * @param review
+     * @param filmName
      *          the review to delete
      */
-    public void deleteReview(Review review) {
+    public void deleteReview(String filmName) {
         ReviewsRoomDatabase.databaseWriteExecutor.execute(() -> {
-            reviewDao.deleteReview(review);
+            reviewDao.deleteReview(filmName);
         });
     }
 }

@@ -63,10 +63,10 @@ public class ReviewsViewModel extends AndroidViewModel {
 
     /**
      * Delete a review from the database
-     * @param review
+     * @param filmName
      *          the review to delete
      */
-    public void deleteReview(Review review) {
-        repository.deleteReview(review);
+    public void deleteReview(String filmName) {
+        repository.deleteReview(filmName);
     }
 }

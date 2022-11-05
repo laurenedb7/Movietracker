@@ -12,4 +12,6 @@
     <string name="add_review">Add a new review</string>
     <string name="expand_card_view">Expand card view</string>
     <string name="rating">Rating of the movie</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 </resources>

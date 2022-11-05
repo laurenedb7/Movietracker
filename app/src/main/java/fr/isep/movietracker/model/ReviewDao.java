@@ -34,6 +34,6 @@ public interface ReviewDao {
     @Update
     void updateReview(Review review);
 
-    @Delete
-    void deleteReview(Review review);
+    @Query("DELETE FROM review_table WHERE filmName = :name")
+    void deleteReview(String name);
 }

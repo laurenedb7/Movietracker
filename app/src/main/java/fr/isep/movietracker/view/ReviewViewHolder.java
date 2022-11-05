@@ -12,6 +12,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,9 +34,12 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
     private final TextView reviewDescription;
     private final TextView reviewCowatchers;
     private final TextView reviewRating;
+    private final Button deleteButton;
+    private final Button updateButton;
 
     private ReviewViewHolder(View itemView) {
         super(itemView);
+
         reviewName = itemView.findViewById(R.id.nameCardView);
         cardView = itemView.findViewById(R.id.base_cardview);
         arrow = itemView.findViewById(R.id.arrow_button);
@@ -43,6 +47,8 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         reviewDescription = itemView.findViewById(R.id.descriptionCardView);
         reviewCowatchers = itemView.findViewById(R.id.cowatchersCardview);
         reviewRating = itemView.findViewById(R.id.ratingCardview);
+        deleteButton = itemView.findViewById(R.id.deleteButton);
+        updateButton = itemView.findViewById(R.id.updateBbutton);
 
         //Expand the cardview to show the data
         arrow.setOnClickListener(view -> {
@@ -63,6 +69,8 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
                 arrow.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
             }
         });
+
+
     }
 
     /**
