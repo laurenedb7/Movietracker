@@ -113,13 +113,10 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
             //add the review in the database
             reviewsViewModel.insertReview(review);
             Snackbar snackbar = Snackbar.make(view, "Adding your review", Snackbar.LENGTH_LONG);
-            snackbar.setAction("Cancel", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    reviewsViewModel.deleteReview(review.getFilmName());
-                    Snackbar snackbar = Snackbar.make(view, "Your review hasn't been added", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
+            snackbar.setAction("Cancel", v -> {
+                reviewsViewModel.deleteReview(review.getFilmName());
+                Snackbar snackbar1 = Snackbar.make(view, "Your review hasn't been added", Snackbar.LENGTH_LONG);
+                snackbar1.show();
             });
             snackbar.show();
 

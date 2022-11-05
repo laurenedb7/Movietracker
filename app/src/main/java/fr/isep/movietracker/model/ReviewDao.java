@@ -22,6 +22,9 @@ import java.util.List;
 @Dao
 public interface ReviewDao {
 
+    @Query("SELECT * FROM review_table ")
+    List<Review> getReviews();
+
     @Query("SELECT * FROM review_table ORDER BY filmName ASC")
     LiveData<List<Review>> getAlphabetizedReviews();
 

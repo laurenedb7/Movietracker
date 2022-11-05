@@ -11,12 +11,11 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
-import fr.isep.movietracker.model.Review;
 import fr.isep.movietracker.controller.ReviewRepository;
+import fr.isep.movietracker.model.Review;
 
 /**
  * Provide data
@@ -39,7 +38,7 @@ public class ReviewsViewModel extends AndroidViewModel {
      * Get all the reviews
      * @return a list of reviews
      */
-    LiveData<List<Review>> getAllReviews() {
+   LiveData<List<Review>> getAllReviews() {
         return allReviews;
     }
 
