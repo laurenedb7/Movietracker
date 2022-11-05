@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The + button to add a new review
      * @param view
+     *          the view
      */
     public void onClickAddButton(View view) {
         Intent intent = new Intent(this, NewReviewActivity.class);

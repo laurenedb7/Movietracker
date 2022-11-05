@@ -10,4 +10,6 @@
     <string name="date">Date I watch the movie</string>
     <string name="cowatcher">People I watch the movie with</string>
     <string name="add_review">Add a new review</string>
+    <string name="expand_card_view">Expand card view</string>
+    <string name="rating">Rating of the movie</string>
 </resources>

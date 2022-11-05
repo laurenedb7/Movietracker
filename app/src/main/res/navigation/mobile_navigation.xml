@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="fr.isep.movietracker.ui.home.HomeFragment"
+        android:name="fr.isep.movietracker.view.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_reviews"
-        android:name="fr.isep.movietracker.ui.reviews.ReviewsFragment"
+        android:name="fr.isep.movietracker.view.ui.reviews.ReviewsFragment"
         android:label="@string/title_reviews"
         tools:layout="@layout/fragment_reviews" />
 </navigation>

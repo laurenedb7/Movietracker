@@ -1,4 +1,4 @@
-package fr.isep.movietracker;
+package fr.isep.movietracker.controller;
 
 import android.content.Context;
 
@@ -11,24 +11,32 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Review.class}, exportSchema = false, version = 1)
-public abstract class ReviewsDatabase extends RoomDatabase {
+import fr.isep.movietracker.model.Review;
+import fr.isep.movietracker.model.ReviewDao;
 
+/**
+ * This is the database.
+ */
+@Database(entities = {Review.class}, exportSchema = false, version = 1)
+public abstract class ReviewsRoomDatabase extends RoomDatabase {
+
+    /** The Review DAO */
     public abstract ReviewDao reviewDao();
 
+    /** The name of the database */
     private static final String DB_NAME = "reviews-db";
 
-    private static ReviewsDatabase instance;
+    private static ReviewsRoomDatabase instance;
 
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    public static synchronized ReviewsDatabase getInstance(Context context) {
+    public static synchronized ReviewsRoomDatabase getInstance(Context context) {
         if (instance == null) {
-            synchronized (ReviewsDatabase.class) {
+            synchronized (ReviewsRoomDatabase.class) {
                 if (instance == null) {
-                    instance = Room.databaseBuilder(context.getApplicationContext(), ReviewsDatabase.class, DB_NAME)
+                    instance = Room.databaseBuilder(context.getApplicationContext(), ReviewsRoomDatabase.class, DB_NAME)
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
@@ -37,6 +45,10 @@ public abstract class ReviewsDatabase extends RoomDatabase {
         return instance;
     }
 
+    /**
+     * Override the onCreate method to populate the database.
+     * For this sample, we clear the database every time it is created.
+     */
     private static final RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

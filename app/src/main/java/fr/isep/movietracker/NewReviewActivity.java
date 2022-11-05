@@ -1,6 +1,7 @@
 package fr.isep.movietracker;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import fr.isep.movietracker.ui.reviews.ReviewsFragment;
-import fr.isep.movietracker.ui.reviews.ReviewsViewModel;
+import fr.isep.movietracker.model.Review;
+import fr.isep.movietracker.view.ui.reviews.ReviewsViewModel;
 
 public class NewReviewActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -61,7 +62,10 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
             cowatchersList.add(cowatcher.getText().toString());
             cowatcher.getText().clear();
             TextView textView = findViewById(R.id.textView3);
-            textView.setText(cowatchersList.toString().replace("[", "").replace("]", ""));
+            textView.setText(cowatchersList
+                    .toString()
+                    .replace("[", "")
+                    .replace("]", ""));
         }
     }
 
@@ -71,37 +75,51 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
      *          the view
      */
     public void submit(View view) {
+        //Get the input
         EditText name = findViewById(R.id.name);
         EditText description = findViewById(R.id.description);
         RatingBar ratingBar = findViewById(R.id.ratingBar);
         EditText date = findViewById(R.id.date);
+
         String filmName = name.getText().toString();
         String filmDate = date.getText().toString();
         String filmDescription = description.getText().toString();
         float filmRating = ratingBar.getRating();
 
+        //Set the cowatchers as a string
         String cowatchers;
         if (!cowatchersList.isEmpty()) {
-            cowatchers = cowatchersList.toString();
+            cowatchers = cowatchersList
+                    .toString()
+                    .replace("[", "")
+                    .replace("]", "");
         }
         else {
             cowatchers = "I watched this movie alone !";
         }
 
+        //Create a review and add it in the database
         Review review = new Review(filmName, filmDate, cowatchers, filmDescription, filmRating);
         if (checkReviewAttributes(review)) {
+            //add the review in the database
             reviewsViewModel.insertReview(review);
-            name.getText().clear();
-            description.getText().clear();
-            ratingBar.setRating(0F);
-            date.getText().clear();
-            cowatchersList.clear();
+
+            //go on home page
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
         else {
+            //error message
 
         }
     }
 
+    /**
+     * Check if the review contains all the attributes
+     * @param review
+     *          the object review
+     * @return {@link boolean}
+     */
     private boolean checkReviewAttributes(Review review) {
         return !review.getFilmName().isEmpty() || !review.getFilmDescription().isEmpty() || review.getFilmRating() != 0;
     }

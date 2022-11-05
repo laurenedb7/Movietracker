@@ -1,4 +1,4 @@
-package fr.isep.movietracker.ui.home;
+package fr.isep.movietracker.view.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

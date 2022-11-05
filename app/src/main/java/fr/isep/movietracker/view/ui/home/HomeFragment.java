@@ -1,4 +1,4 @@
-package fr.isep.movietracker.ui.reviews;
+package fr.isep.movietracker.view.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,25 +10,25 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import fr.isep.movietracker.databinding.FragmentReviewsBinding;
+import fr.isep.movietracker.databinding.FragmentHomeBinding;
 
 /**
- * The reviews fragment with all the reviews we have
+ * The home fragment with the last reviews and a dashboard
  */
-public class ReviewsFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
-    private FragmentReviewsBinding binding;
+    private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ReviewsViewModel reviewsViewModel =
-                new ViewModelProvider(this).get(ReviewsViewModel.class);
+        HomeViewModel homeViewModel =
+                new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentReviewsBinding.inflate(inflater, container, false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        reviewsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textHome;
+        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

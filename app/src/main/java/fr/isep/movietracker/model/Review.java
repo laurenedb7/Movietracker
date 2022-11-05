@@ -1,5 +1,6 @@
-package fr.isep.movietracker;
+package fr.isep.movietracker.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -12,6 +13,8 @@ import androidx.room.PrimaryKey;
 public class Review {
 
     @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id")
     private int id;
 
     @ColumnInfo(name = "filmName")

@@ -1,4 +1,4 @@
-package fr.isep.movietracker;
+package fr.isep.movietracker.model;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -11,9 +11,6 @@ import java.util.List;
 
 @Dao
 public interface ReviewDao {
-
-    @Query("SELECT * FROM review_table")
-    List<Review> getReviews();
 
     @Query("SELECT * FROM review_table ORDER BY filmName ASC")
     LiveData<List<Review>> getAlphabetizedReviews();
