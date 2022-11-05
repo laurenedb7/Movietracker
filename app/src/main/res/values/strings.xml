@@ -9,4 +9,5 @@
     <string name="description">Description of the movie</string>
     <string name="date">Date I watch the movie</string>
     <string name="cowatcher">People I watch the movie with</string>
+    <string name="add_review">Add a new review</string>
 </resources>

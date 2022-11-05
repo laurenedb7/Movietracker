@@ -1,24 +1,58 @@
 package fr.isep.movietracker;
 
-import java.util.List;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 /**
  * Class for the object Review
  */
+@Entity(tableName = "review_table")
 public class Review {
 
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "filmName")
     private String filmName;
+
+    @ColumnInfo(name = "date")
     private String date;
-    private List<String> watchers;
+
+    @ColumnInfo(name = "watchers")
+    private String watchers;
+
+    @ColumnInfo(name = "filmDescription")
     private String filmDescription;
+
+    @ColumnInfo(name = "filmRating")
     private float filmRating;
 
-    public Review(String filmName, String date, List<String> watchers, String filmDescription, float filmRating) {
+    public Review(int id, String filmName, String date, String watchers, String filmDescription, float filmRating) {
+        this.id = id;
         this.filmName = filmName;
         this.date = date;
         this.watchers = watchers;
         this.filmDescription = filmDescription;
         this.filmRating = filmRating;
+    }
+
+    @Ignore
+    public Review(String filmName, String date, String watchers, String filmDescription, float filmRating) {
+        this.filmName = filmName;
+        this.date = date;
+        this.watchers = watchers;
+        this.filmDescription = filmDescription;
+        this.filmRating = filmRating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFilmName() {
@@ -37,11 +71,11 @@ public class Review {
         this.date = date;
     }
 
-    public List<String> getWatchers() {
+    public String getWatchers() {
         return watchers;
     }
 
-    public void setWatchers(List<String> watchers) {
+    public void setWatchers(String watchers) {
         this.watchers = watchers;
     }
 

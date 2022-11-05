@@ -9,23 +9,30 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import fr.isep.movietracker.ui.reviews.ReviewsFragment;
+import fr.isep.movietracker.ui.reviews.ReviewsViewModel;
+
 public class NewReviewActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    private ReviewsViewModel reviewsViewModel;
 
     /** The date we watch the movie with */
     EditText datePicker;
 
     /** The list of people we watch the movie with */
-    List<String> cowatchers = new ArrayList<>();
+    List<String> cowatchersList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_review);
+        reviewsViewModel = new ViewModelProvider(this).get(ReviewsViewModel.class);
     }
 
     /**
@@ -51,10 +58,10 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
     public void addCowatcher(View view) {
         EditText cowatcher = findViewById(R.id.cowatcher);
         if (!cowatcher.getText().toString().isEmpty()) {
-            cowatchers.add(cowatcher.getText().toString());
+            cowatchersList.add(cowatcher.getText().toString());
             cowatcher.getText().clear();
             TextView textView = findViewById(R.id.textView3);
-            textView.setText(cowatchers.toString().replace("[", "").replace("]", ""));
+            textView.setText(cowatchersList.toString().replace("[", "").replace("]", ""));
         }
     }
 
@@ -72,7 +79,31 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         String filmDate = date.getText().toString();
         String filmDescription = description.getText().toString();
         float filmRating = ratingBar.getRating();
+
+        String cowatchers;
+        if (!cowatchersList.isEmpty()) {
+            cowatchers = cowatchersList.toString();
+        }
+        else {
+            cowatchers = "I watched this movie alone !";
+        }
+
         Review review = new Review(filmName, filmDate, cowatchers, filmDescription, filmRating);
+        if (checkReviewAttributes(review)) {
+            reviewsViewModel.insertReview(review);
+            name.getText().clear();
+            description.getText().clear();
+            ratingBar.setRating(0F);
+            date.getText().clear();
+            cowatchersList.clear();
+        }
+        else {
+
+        }
+    }
+
+    private boolean checkReviewAttributes(Review review) {
+        return !review.getFilmName().isEmpty() || !review.getFilmDescription().isEmpty() || review.getFilmRating() != 0;
     }
 
     @Override
