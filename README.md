@@ -1,7 +1,7 @@
 # Movietracker
 
-Project : Personal Movie Tracker
-Author : Laurène de Blauwe
+### Project : Personal Movie Tracker
+### Author : Laurène de Blauwe
 
 ## Description of the project
 This project is an application used to track the movies you see with five categories
