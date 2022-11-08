@@ -7,20 +7,54 @@
 
 package fr.isep.movietracker.view.ui.home;
 
+import android.app.Application;
+import android.view.View;
+import android.widget.ListView;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+import java.util.List;
+
+import fr.isep.movietracker.controller.ReviewRepository;
+import fr.isep.movietracker.model.Review;
+
+public class HomeViewModel extends AndroidViewModel {
+
+    /** The repository to manage the data */
+    private final ReviewRepository repository;
+
+    /** The list of all the reviews in the database */
+    private final LiveData<List<Review>> topThreeReviews;
+
+    private final LiveData<Review> lastReview;
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public HomeViewModel(Application application) {
+        super(application);
         mText = new MutableLiveData<>();
         mText.setValue("Welcome on your personal movie tracker !");
+        repository = new ReviewRepository(application);
+        topThreeReviews = repository.getTopThreeReviews();
+        lastReview = repository.getLastReview();
     }
 
     public LiveData<String> getText() {
         return mText;
+    }
+
+    /**
+     * Get the top three reviews
+     * @return a list of reviews
+     */
+    LiveData<List<Review>> getTopThreeReviews() {
+        return topThreeReviews;
+    }
+
+    LiveData<Review> getLastReview() {
+        return lastReview;
     }
 }

@@ -28,6 +28,12 @@ public interface ReviewDao {
     @Query("SELECT * FROM review_table ORDER BY filmName ASC")
     LiveData<List<Review>> getAlphabetizedReviews();
 
+    @Query("SELECT * FROM review_table ORDER BY filmRating DESC LIMIT 3")
+    LiveData<List<Review>> getTopThreeReviews();
+
+    @Query("SELECT * FROM review_table ORDER BY date DESC LIMIT 1")
+    LiveData<Review> getLastReview();
+
     @Query("DELETE FROM review_table")
     void deleteAll();
 

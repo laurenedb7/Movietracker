@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
@@ -25,6 +26,7 @@ import fr.isep.movietracker.model.ReviewDao;
  * This is the database.
  */
 @Database(entities = {Review.class}, exportSchema = false, version = 1)
+@TypeConverters({Converters.class})
 public abstract class ReviewsRoomDatabase extends RoomDatabase {
 
     /** The Review DAO */
@@ -33,11 +35,11 @@ public abstract class ReviewsRoomDatabase extends RoomDatabase {
     /** The name of the database */
     private static final String DB_NAME = "reviews-db";
 
+    /** The instance */
     private static ReviewsRoomDatabase instance;
 
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
-            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static synchronized ReviewsRoomDatabase getInstance(Context context) {
         if (instance == null) {

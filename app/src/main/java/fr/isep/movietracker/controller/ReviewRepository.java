@@ -27,10 +27,17 @@ public class ReviewRepository {
     /** The list of all reviews in the database */
     private final LiveData<List<Review>> allReviews;
 
+    /** The list of all reviews in the database */
+    private final LiveData<List<Review>> topThreeReviews;
+
+    private final LiveData<Review> lastReview;
+
     public ReviewRepository(Application application) {
         ReviewsRoomDatabase db = ReviewsRoomDatabase.getInstance(application);
         reviewDao = db.reviewDao();
         allReviews = reviewDao.getAlphabetizedReviews();
+        topThreeReviews = reviewDao.getTopThreeReviews();
+        lastReview = reviewDao.getLastReview();
     }
 
     /**
@@ -39,6 +46,22 @@ public class ReviewRepository {
      */
     public LiveData<List<Review>> getAllReviews() {
         return allReviews;
+    }
+
+    /**
+     * Get the top 3 reviews
+     * @return a list of the top 3 reviews
+     */
+    public LiveData<List<Review>> getTopThreeReviews() {
+        return topThreeReviews;
+    }
+
+    /**
+     * Get the last movie I see
+     * @return the last review
+     */
+    public LiveData<Review> getLastReview() {
+        return lastReview;
     }
 
     /**

@@ -14,4 +14,6 @@
     <string name="rating">Rating of the movie</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
+    <string name="lastMovie">The last movie I saw</string>
+    <string name="top3">My top 3</string>
 </resources>

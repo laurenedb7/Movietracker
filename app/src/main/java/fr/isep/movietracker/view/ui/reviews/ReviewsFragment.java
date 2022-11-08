@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fr.isep.movietracker.controller.ReviewListAdapter;
+import fr.isep.movietracker.controller.ReviewsPageAdapter;
 import fr.isep.movietracker.databinding.FragmentReviewsBinding;
 
 /**
@@ -35,8 +35,8 @@ public class ReviewsFragment extends Fragment {
         View root = binding.getRoot();
 
         RecyclerView recyclerView;
-        recyclerView = binding.recyclerview;
-        final ReviewListAdapter adapter = new ReviewListAdapter(new ReviewListAdapter.ReviewDiff());
+        recyclerView = binding.recyclerviewReviews;
+        final ReviewsPageAdapter adapter = new ReviewsPageAdapter(new ReviewsPageAdapter.ReviewDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
 

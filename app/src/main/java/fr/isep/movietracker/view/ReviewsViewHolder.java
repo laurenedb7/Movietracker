@@ -25,7 +25,7 @@ import fr.isep.movietracker.R;
 /**
  * Recycler view to display the data
  */
-public class ReviewViewHolder extends RecyclerView.ViewHolder {
+public class ReviewsViewHolder extends RecyclerView.ViewHolder {
 
     private final CardView cardView;
     private final TextView reviewName;
@@ -37,7 +37,7 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
     private final Button deleteButton;
     private final Button updateButton;
 
-    private ReviewViewHolder(View itemView) {
+    private ReviewsViewHolder(View itemView) {
         super(itemView);
 
         reviewName = itemView.findViewById(R.id.nameCardView);
@@ -69,8 +69,6 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
                 arrow.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
             }
         });
-
-
     }
 
     /**
@@ -109,9 +107,9 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         reviewRating.setText(String.valueOf(rate));
     }
 
-    public static ReviewViewHolder create(ViewGroup parent) {
+    public static ReviewsViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_item, parent, false);
-        return new ReviewViewHolder(view);
+                .inflate(R.layout.recyclerview_reviews_item, parent, false);
+        return new ReviewsViewHolder(view);
     }
 }

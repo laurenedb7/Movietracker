@@ -13,22 +13,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import fr.isep.movietracker.view.ReviewViewHolder;
+import fr.isep.movietracker.view.ReviewsViewHolder;
 import fr.isep.movietracker.model.Review;
 
-public class ReviewListAdapter extends ListAdapter<Review, ReviewViewHolder> {
+public class ReviewsPageAdapter extends ListAdapter<Review, ReviewsViewHolder> {
 
-    public ReviewListAdapter(@NonNull DiffUtil.ItemCallback<Review> diffCallback) {
+    public ReviewsPageAdapter(@NonNull DiffUtil.ItemCallback<Review> diffCallback) {
         super(diffCallback);
     }
 
     @Override
-    public ReviewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return ReviewViewHolder.create(parent);
+    public ReviewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return ReviewsViewHolder.create(parent);
     }
 
     @Override
-    public void onBindViewHolder(ReviewViewHolder holder, int position) {
+    public void onBindViewHolder(ReviewsViewHolder holder, int position) {
         Review current = getItem(position);
         holder.setName(current.getFilmName());
         holder.setDescription(current.getFilmDescription());

@@ -16,7 +16,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import fr.isep.movietracker.controller.HomePageAdapter;
 import fr.isep.movietracker.databinding.FragmentHomeBinding;
 
 /**
@@ -26,16 +29,35 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        final TextView nameCardView = binding.nameCardView;
+        final TextView descriptionCardView = binding.descriptionCardView;
+        final TextView cowatchersCardview = binding.cowatchersCardview;
+        final TextView ratingCardview = binding.ratingCardview;
+        homeViewModel.getLastReview().observe(getViewLifecycleOwner(), x -> {
+            nameCardView.setText(x.getFilmName());
+            descriptionCardView.setText(x.getFilmDescription());
+            cowatchersCardview.setText(x.getWatchers());
+            ratingCardview.setText(String.valueOf(x.getFilmRating()));
+        });
+
+        homeViewModel.getTopThreeReviews().observe(getViewLifecycleOwner(), list -> {
+            System.out.println(list.toString());
+            RecyclerView recyclerView;
+            recyclerView = binding.recyclerviewHome;
+            final HomePageAdapter adapter = new HomePageAdapter(list);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        });
+
         return root;
     }
 
