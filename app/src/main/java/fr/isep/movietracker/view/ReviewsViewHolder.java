@@ -35,7 +35,6 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
     private final TextView reviewCowatchers;
     private final TextView reviewRating;
     private final Button deleteButton;
-    private final Button updateButton;
 
     private ReviewsViewHolder(View itemView) {
         super(itemView);
@@ -48,7 +47,6 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
         reviewCowatchers = itemView.findViewById(R.id.cowatchersCardview);
         reviewRating = itemView.findViewById(R.id.ratingCardview);
         deleteButton = itemView.findViewById(R.id.deleteButton);
-        updateButton = itemView.findViewById(R.id.updateBbutton);
 
         //Expand the cardview to show the data
         arrow.setOnClickListener(view -> {
@@ -73,10 +71,6 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
 
     public Button getDeleteButton() {
         return deleteButton;
-    }
-
-    public Button getUpdateButton() {
-        return updateButton;
     }
 
     /**
