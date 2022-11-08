@@ -54,9 +54,6 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
     /** The date we watch the movie with */
     EditText datePicker;
 
-    /** The people we watch the movie with */
-    TextView watchers;
-
     /** The list of people we watch the movie with */
     List<String> cowatchersList = new ArrayList<>();
 
@@ -92,11 +89,6 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         if (!cowatcher.getText().toString().isEmpty()) {
             cowatchersList.add(cowatcher.getText().toString());
             cowatcher.getText().clear();
-            watchers = findViewById(R.id.watchers);
-            watchers.setText(cowatchersList
-                    .toString()
-                    .replace("[", "")
-                    .replace("]", ""));
         }
     }
 
