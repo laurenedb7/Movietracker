@@ -110,7 +110,11 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         date = findViewById(R.id.date);
 
         String filmName = name.getText().toString();
-        Date filmDate = new SimpleDateFormat("dd/MM/yyyy").parse(date.getText().toString());
+        String filmDate = date.getText().toString();
+        Date filmNewDate = null;
+        if (!filmDate.isEmpty()) {
+            filmNewDate = new SimpleDateFormat("dd/MM/yyyy").parse(date.getText().toString());
+        }
         String filmDescription = description.getText().toString();
         float filmRating = ratingBar.getRating();
 
@@ -118,7 +122,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         String cowatchers = setCowatchers(cowatchersList);
 
         //Create a review and add it in the database
-        Review review = new Review(filmName, filmDate, cowatchers, filmDescription, filmRating);
+        Review review = new Review(filmName, filmNewDate, cowatchers, filmDescription, filmRating);
         if (checkReviewAttributes(review)) {
             //add the review in the database
             reviewsViewModel.insertReview(review);
@@ -170,7 +174,10 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
      * @return {@link boolean}
      */
     private boolean checkReviewAttributes(Review review) {
-        return !review.getFilmName().isEmpty() || !review.getFilmDescription().isEmpty() || review.getFilmRating() != 0;
+        return !review.getFilmName().isEmpty()
+                || !review.getFilmDescription().isEmpty()
+                || review.getDate() != null
+                || review.getFilmRating() != 0;
     }
 
     /**
