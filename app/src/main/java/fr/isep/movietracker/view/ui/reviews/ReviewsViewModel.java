@@ -11,6 +11,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -28,10 +29,18 @@ public class ReviewsViewModel extends AndroidViewModel {
     /** The list of all the reviews in the database */
     private final LiveData<List<Review>> allReviews;
 
+    private final MutableLiveData<String> mText;
+
     public ReviewsViewModel(Application application) {
         super(application);
+        mText = new MutableLiveData<>();
+        mText.setValue("All of your reviews");
         repository = new ReviewRepository(application);
         allReviews = repository.getAllReviews();
+    }
+
+    public LiveData<String> getText() {
+        return mText;
     }
 
     /**
