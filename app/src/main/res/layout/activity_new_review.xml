@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".NewReviewActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +14,6 @@
         android:contentDescription="@string/add_review"
         android:onClick="onClickBackButton"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        app:backgroundTint="#673AB7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

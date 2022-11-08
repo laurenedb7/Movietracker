@@ -31,6 +31,9 @@ import java.util.List;
 import fr.isep.movietracker.model.Review;
 import fr.isep.movietracker.view.ui.reviews.ReviewsViewModel;
 
+/**
+ * The activity used to add a new review
+ */
 public class NewReviewActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     /** The View model */

@@ -7,8 +7,6 @@
 
 package fr.isep.movietracker.view;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
@@ -21,6 +19,10 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import fr.isep.movietracker.R;
 
@@ -36,6 +38,7 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
     private final TextView reviewDescription;
     private final TextView reviewCowatchers;
     private final TextView reviewRating;
+    private final TextView reviewDate;
     private final Button deleteButton;
 
     private ReviewsViewHolder(View itemView) {
@@ -48,6 +51,7 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
         reviewDescription = itemView.findViewById(R.id.descriptionCardView);
         reviewCowatchers = itemView.findViewById(R.id.cowatchersCardview);
         reviewRating = itemView.findViewById(R.id.ratingCardview);
+        reviewDate = itemView.findViewById(R.id.dateCardView);
         deleteButton = itemView.findViewById(R.id.deleteButton);
 
         //Expand the cardview to show the data
@@ -109,6 +113,17 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
      */
     public void setRating(float rate) {
         reviewRating.setText(String.valueOf(rate));
+    }
+
+    /**
+     * Set the date in the card view
+     * @param date
+     *          the date to set
+     */
+    public void setDate(Date date) {
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, new Locale("en", "FR"));
+        String newDate = dateFormat.format(date);
+        reviewDate.setText(newDate);
     }
 
     public static ReviewsViewHolder create(ViewGroup parent) {

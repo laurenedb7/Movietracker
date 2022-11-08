@@ -19,6 +19,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.util.Locale;
+
 import fr.isep.movietracker.controller.HomePageAdapter;
 import fr.isep.movietracker.databinding.FragmentHomeBinding;
 
@@ -42,12 +45,17 @@ public class HomeFragment extends Fragment {
         final TextView descriptionCardView = binding.descriptionCardView;
         final TextView cowatchersCardview = binding.cowatchersCardview;
         final TextView ratingCardview = binding.ratingCardview;
+        final TextView dateCardView = binding.dateCardView;
+
         homeViewModel.getLastReview().observe(getViewLifecycleOwner(), x -> {
             if (x != null) {
                 nameCardView.setText(x.getFilmName());
                 descriptionCardView.setText(x.getFilmDescription());
                 cowatchersCardview.setText(x.getWatchers());
                 ratingCardview.setText(String.valueOf(x.getFilmRating()));
+                DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, new Locale("en", "FR"));
+                String date = dateFormat.format(x.getDate());
+                dateCardView.setText(date);
             }
             else {
                 binding.topMovieLayout.setVisibility(View.INVISIBLE);

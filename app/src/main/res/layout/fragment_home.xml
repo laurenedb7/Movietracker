@@ -173,6 +173,29 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="10dp"
+                            android:contentDescription="@string/date"
+                            android:src="@drawable/ic_baseline_calendar_month_24" />
+
+                        <TextView
+                            android:id="@+id/dateCardView"
+                            android:layout_width="370dp"
+                            android:layout_height="29dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
                             android:contentDescription="@string/rating"
                             android:src="@drawable/ic_baseline_star_rate_24" />
 

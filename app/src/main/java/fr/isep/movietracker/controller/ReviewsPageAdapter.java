@@ -45,6 +45,7 @@ public class ReviewsPageAdapter extends ListAdapter<Review, ReviewsViewHolder> {
         holder.setDescription(current.getFilmDescription());
         holder.setCowatchers(current.getWatchers());
         holder.setRating(current.getFilmRating());
+        holder.setDate(current.getDate());
 
         holder.getDeleteButton().setOnClickListener(view -> {
             if (onDeleteClickListener != null) {
