@@ -21,8 +21,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import fr.isep.movietracker.model.Review;
@@ -83,7 +86,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
      * @param view
      *          the view
      */
-    public void submit(View view) {
+    public void submit(View view) throws ParseException {
         //Get the input
         EditText name = findViewById(R.id.name);
         EditText description = findViewById(R.id.description);
@@ -91,7 +94,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         EditText date = findViewById(R.id.date);
 
         String filmName = name.getText().toString();
-        String filmDate = date.getText().toString();
+        Date filmDate = new SimpleDateFormat("dd/MM/yyyy").parse(date.getText().toString());
         String filmDescription = description.getText().toString();
         float filmRating = ratingBar.getRating();
 
@@ -130,7 +133,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
             if (review.getFilmName().isEmpty()) {
                 messageToDisplay = "The film name is missing";
             }
-            else if (review.getDate().isEmpty()) {
+            else if (review.getDate().toString().isEmpty()) {
                 messageToDisplay = "The date is missing";
             }
             else if (review.getFilmDescription().isEmpty()) {

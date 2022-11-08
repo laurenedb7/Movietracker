@@ -13,6 +13,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 /**
  * Class for the object Review
  */
@@ -28,7 +30,7 @@ public class Review {
     private String filmName;
 
     @ColumnInfo(name = "date")
-    private String date;
+    private Date date;
 
     @ColumnInfo(name = "watchers")
     private String watchers;
@@ -39,7 +41,7 @@ public class Review {
     @ColumnInfo(name = "filmRating")
     private float filmRating;
 
-    public Review(int id, String filmName, String date, String watchers, String filmDescription, float filmRating) {
+    public Review(int id, String filmName, Date date, String watchers, String filmDescription, float filmRating) {
         this.id = id;
         this.filmName = filmName;
         this.date = date;
@@ -49,7 +51,7 @@ public class Review {
     }
 
     @Ignore
-    public Review(String filmName, String date, String watchers, String filmDescription, float filmRating) {
+    public Review(String filmName, Date date, String watchers, String filmDescription, float filmRating) {
         this.filmName = filmName;
         this.date = date;
         this.watchers = watchers;
@@ -73,11 +75,11 @@ public class Review {
         this.filmName = filmName;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
