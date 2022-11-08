@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        // The title of the page
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment {
         final TextView ratingCardview = binding.ratingCardview;
         final TextView dateCardView = binding.dateCardView;
 
+        // Get the last review
         homeViewModel.getLastReview().observe(getViewLifecycleOwner(), x -> {
             if (x != null) {
                 nameCardView.setText(x.getFilmName());
@@ -62,6 +64,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        // Get the top 3
         homeViewModel.getTopThreeReviews().observe(getViewLifecycleOwner(), list -> {
             if (!list.isEmpty()) {
                 RecyclerView recyclerView;

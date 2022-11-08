@@ -4,6 +4,9 @@ import androidx.room.TypeConverter;
 
 import java.util.Date;
 
+/**
+ * Converters to convert the date in the database
+ */
 public class Converters {
     @TypeConverter
     public static Date fromTimestamp(Long value) {

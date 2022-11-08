@@ -20,8 +20,12 @@ import fr.isep.movietracker.R;
 import fr.isep.movietracker.model.Review;
 import fr.isep.movietracker.view.HomeViewHolder;
 
+/**
+ * The adapter for the home page
+ */
 public class HomePageAdapter extends RecyclerView.Adapter<HomeViewHolder> {
 
+    /** The list of reviews */
     List<Review> items;
 
     public HomePageAdapter(List<Review> items) {

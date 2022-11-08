@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import fr.isep.movietracker.R;
 
+/**
+ * The home page view holder
+ */
 public class HomeViewHolder extends RecyclerView.ViewHolder {
 
     /** The film name */

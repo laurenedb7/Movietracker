@@ -30,6 +30,7 @@ public class ReviewRepository {
     /** The list of all reviews in the database */
     private final LiveData<List<Review>> topThreeReviews;
 
+    /** The last movie we saw */
     private final LiveData<Review> lastReview;
 
     public ReviewRepository(Application application) {

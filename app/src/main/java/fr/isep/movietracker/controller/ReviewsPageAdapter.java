@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.ListAdapter;
 import fr.isep.movietracker.view.ReviewsViewHolder;
 import fr.isep.movietracker.model.Review;
 
+/**
+ * The adapter for the review page
+ */
 public class ReviewsPageAdapter extends ListAdapter<Review, ReviewsViewHolder> {
 
     /**

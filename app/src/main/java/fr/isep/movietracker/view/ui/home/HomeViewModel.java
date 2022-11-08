@@ -21,6 +21,9 @@ import java.util.List;
 import fr.isep.movietracker.controller.ReviewRepository;
 import fr.isep.movietracker.model.Review;
 
+/**
+ * The home page view model with the title, the last review and top 3
+ */
 public class HomeViewModel extends AndroidViewModel {
 
     /** The repository to manage the data */
