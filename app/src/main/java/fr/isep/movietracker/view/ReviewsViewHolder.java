@@ -7,6 +7,8 @@
 
 package fr.isep.movietracker.view;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;

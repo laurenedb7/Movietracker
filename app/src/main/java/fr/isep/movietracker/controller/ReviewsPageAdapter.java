@@ -18,8 +18,19 @@ import fr.isep.movietracker.model.Review;
 
 public class ReviewsPageAdapter extends ListAdapter<Review, ReviewsViewHolder> {
 
-    public ReviewsPageAdapter(@NonNull DiffUtil.ItemCallback<Review> diffCallback) {
+    /**
+     * Delete review interface
+     */
+    public interface OnDeleteClickListener {
+        void onDeleteClickListener(String filmName);
+    }
+
+    /** The event listener */
+    private final OnDeleteClickListener onDeleteClickListener;
+
+    public ReviewsPageAdapter(@NonNull DiffUtil.ItemCallback<Review> diffCallback, OnDeleteClickListener listener) {
         super(diffCallback);
+        this.onDeleteClickListener = listener;
     }
 
     @Override
@@ -34,6 +45,12 @@ public class ReviewsPageAdapter extends ListAdapter<Review, ReviewsViewHolder> {
         holder.setDescription(current.getFilmDescription());
         holder.setCowatchers(current.getWatchers());
         holder.setRating(current.getFilmRating());
+
+        holder.getDeleteButton().setOnClickListener(view -> {
+            if (onDeleteClickListener != null) {
+                onDeleteClickListener.onDeleteClickListener(current.getFilmName());
+            }
+        });
     }
 
     public static class ReviewDiff extends DiffUtil.ItemCallback<Review> {

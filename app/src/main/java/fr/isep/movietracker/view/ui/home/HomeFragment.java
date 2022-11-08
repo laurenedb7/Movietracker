@@ -43,19 +43,29 @@ public class HomeFragment extends Fragment {
         final TextView cowatchersCardview = binding.cowatchersCardview;
         final TextView ratingCardview = binding.ratingCardview;
         homeViewModel.getLastReview().observe(getViewLifecycleOwner(), x -> {
-            nameCardView.setText(x.getFilmName());
-            descriptionCardView.setText(x.getFilmDescription());
-            cowatchersCardview.setText(x.getWatchers());
-            ratingCardview.setText(String.valueOf(x.getFilmRating()));
+            if (x != null) {
+                nameCardView.setText(x.getFilmName());
+                descriptionCardView.setText(x.getFilmDescription());
+                cowatchersCardview.setText(x.getWatchers());
+                ratingCardview.setText(String.valueOf(x.getFilmRating()));
+            }
+            else {
+                binding.topMovieLayout.setVisibility(View.INVISIBLE);
+            }
         });
 
         homeViewModel.getTopThreeReviews().observe(getViewLifecycleOwner(), list -> {
-            System.out.println(list.toString());
-            RecyclerView recyclerView;
-            recyclerView = binding.recyclerviewHome;
-            final HomePageAdapter adapter = new HomePageAdapter(list);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+            if (!list.isEmpty()) {
+                RecyclerView recyclerView;
+                recyclerView = binding.recyclerviewHome;
+                final HomePageAdapter adapter = new HomePageAdapter(list);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+            }
+            else {
+                binding.lastMovieLayout.setVisibility(View.INVISIBLE);
+            }
+
         });
 
         return root;

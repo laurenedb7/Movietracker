@@ -30,6 +30,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lastMovieLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -70,9 +71,9 @@
                         android:layout_height="29dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:text="@string/lastMovie"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:text="@string/lastMovie"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -192,6 +193,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topMovieLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

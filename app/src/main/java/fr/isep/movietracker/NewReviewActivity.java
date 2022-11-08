@@ -127,6 +127,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
                 clear();
             });
             snackbar.show();
+            clear();
         }
         else {
             //error message
