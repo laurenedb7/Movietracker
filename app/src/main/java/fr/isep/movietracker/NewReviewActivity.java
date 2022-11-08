@@ -33,7 +33,20 @@ import fr.isep.movietracker.view.ui.reviews.ReviewsViewModel;
 
 public class NewReviewActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    /** The View model */
     private ReviewsViewModel reviewsViewModel;
+
+    /** The name of the movie */
+    EditText name;
+
+    /** The description of the movie */
+    EditText description;
+
+    /** The rating of the movie */
+    RatingBar ratingBar;
+
+    /** The date we watch the movie on */
+    EditText date;
 
     /** The date we watch the movie with */
     EditText datePicker;
@@ -88,10 +101,10 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
      */
     public void submit(View view) throws ParseException {
         //Get the input
-        EditText name = findViewById(R.id.name);
-        EditText description = findViewById(R.id.description);
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
-        EditText date = findViewById(R.id.date);
+        name = findViewById(R.id.name);
+        description = findViewById(R.id.description);
+        ratingBar = findViewById(R.id.ratingBar);
+        date = findViewById(R.id.date);
 
         String filmName = name.getText().toString();
         Date filmDate = new SimpleDateFormat("dd/MM/yyyy").parse(date.getText().toString());
@@ -99,16 +112,7 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
         float filmRating = ratingBar.getRating();
 
         //Set the cowatchers as a string
-        String cowatchers;
-        if (!cowatchersList.isEmpty()) {
-            cowatchers = cowatchersList
-                    .toString()
-                    .replace("[", "")
-                    .replace("]", "");
-        }
-        else {
-            cowatchers = "I watched this movie alone !";
-        }
+        String cowatchers = setCowatchers(cowatchersList);
 
         //Create a review and add it in the database
         Review review = new Review(filmName, filmDate, cowatchers, filmDescription, filmRating);
@@ -120,12 +124,9 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
                 reviewsViewModel.deleteReview(review.getFilmName());
                 Snackbar snackbar1 = Snackbar.make(view, "Your review hasn't been added", Snackbar.LENGTH_LONG);
                 snackbar1.show();
+                clear();
             });
             snackbar.show();
-
-            //go on home page
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
         }
         else {
             //error message
@@ -148,6 +149,17 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
     }
 
     /**
+     * Come back to home page on click button
+     * @param view
+     *          the view
+     */
+    public void onClickBackButton(View view) {
+        //go on home page
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * Check if the review contains all the attributes
      * @param review
      *          the object review
@@ -155,6 +167,37 @@ public class NewReviewActivity extends AppCompatActivity implements DatePickerDi
      */
     private boolean checkReviewAttributes(Review review) {
         return !review.getFilmName().isEmpty() || !review.getFilmDescription().isEmpty() || review.getFilmRating() != 0;
+    }
+
+    /**
+     * Set the cowatchers list as a string
+     * @param cowatchersList
+     *              the list of cowatchers
+     * @return a string with all the cowatchers separate with ","
+     */
+    private String setCowatchers(List<String> cowatchersList) {
+        String cowatchers;
+        if (!cowatchersList.isEmpty()) {
+            cowatchers = cowatchersList
+                    .toString()
+                    .replace("[", "")
+                    .replace("]", "");
+        }
+        else {
+            cowatchers = "I watched this movie alone !";
+        }
+        return cowatchers;
+    }
+
+    /**
+     * Clear the form
+     */
+    private void clear() {
+        name.getText().clear();
+        description.getText().clear();
+        ratingBar.setRating(0F);
+        date.getText().clear();
+        cowatchersList.clear();
     }
 
     @Override

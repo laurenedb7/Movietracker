@@ -71,6 +71,14 @@ public class ReviewsViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public Button getUpdateButton() {
+        return updateButton;
+    }
+
     /**
      * Set the name in the card view
      * @param text

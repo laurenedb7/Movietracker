@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_movie_filter_24.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/ic_baseline_people_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_star_rate_24.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.184" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2355209350585938" />
         <entry key="app/src/main/res/layout/activity_new_review.xml" value="0.21096083895257456" />
         <entry key="app/src/main/res/layout/activity_update_review.xml" value="0.225" />
