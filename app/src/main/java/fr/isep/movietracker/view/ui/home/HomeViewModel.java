@@ -29,8 +29,10 @@ public class HomeViewModel extends AndroidViewModel {
     /** The list of all the reviews in the database */
     private final LiveData<List<Review>> topThreeReviews;
 
+    /** The last movie we saw */
     private final LiveData<Review> lastReview;
 
+    /** The title of the pahe */
     private final MutableLiveData<String> mText;
 
     public HomeViewModel(Application application) {
@@ -42,6 +44,10 @@ public class HomeViewModel extends AndroidViewModel {
         lastReview = repository.getLastReview();
     }
 
+    /**
+     * Get the title of the page
+     * @return the title of the page
+     */
     public LiveData<String> getText() {
         return mText;
     }
@@ -54,6 +60,10 @@ public class HomeViewModel extends AndroidViewModel {
         return topThreeReviews;
     }
 
+    /**
+     * Get the last review
+     * @return the last review
+     */
     LiveData<Review> getLastReview() {
         return lastReview;
     }

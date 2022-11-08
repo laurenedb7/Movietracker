@@ -29,6 +29,7 @@ public class ReviewsViewModel extends AndroidViewModel {
     /** The list of all the reviews in the database */
     private final LiveData<List<Review>> allReviews;
 
+    /** Title of the page */
     private final MutableLiveData<String> mText;
 
     public ReviewsViewModel(Application application) {
@@ -39,6 +40,10 @@ public class ReviewsViewModel extends AndroidViewModel {
         allReviews = repository.getAllReviews();
     }
 
+    /**
+     * Get the title of the page
+     * @return the title of the page
+     */
     public LiveData<String> getText() {
         return mText;
     }
